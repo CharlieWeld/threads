@@ -7,10 +7,24 @@ public class Grades {
 
     private String passwords[];
     private ArrayList<String> grades;
+    private int userNum;
 
     public Grades(){
         passwords = new String[]{"pass1", "pass2", "pass3"};
         grades = new ArrayList<String>();
+    }
+
+    public boolean login(int user, String pass){
+        if(this.passwords[user].equals(pass)) {
+            userNum = user;
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public String getGrade(){
+        return grades.get(userNum);
     }
 
 
@@ -25,8 +39,8 @@ public class Grades {
         int num = 1;
         String pass = "pass2";
 
-        if (g.passwords[num].equals(pass))
-            System.out.println(g.grades.get(num));
+        if (g.login(num, pass))
+            System.out.println(g.getGrade());
         else
             System.out.println("Incorrect Password");
 
