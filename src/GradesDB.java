@@ -1,22 +1,25 @@
 import java.util.ArrayList;
 
-/**
- * Created by Charlie on 24/03/2016.
- */
-public class Grades {
 
+public class GradesDB {
+
+    // Member variables
+    private int userNumber;
     private String passwords[];
     private ArrayList<String> grades;
-    private int userNum;
 
-    public Grades(){
+    public GradesDB(){
+        // Initialise the student numbers, passwords and grades
         passwords = new String[]{"pass1", "pass2", "pass3"};
         grades = new ArrayList<String>();
+        grades.add("grade1");
+        grades.add("grade2");
+        grades.add("grade3");
     }
 
     public boolean login(int user, String pass){
         if(this.passwords[user].equals(pass)) {
-            userNum = user;
+            userNumber = user;
             return true;
         }
         else
@@ -24,27 +27,23 @@ public class Grades {
     }
 
     public String getGrade(){
-        return grades.get(userNum);
+        return grades.get(userNumber);
     }
 
 
     public static void main(String args[]){
 
-        Grades g = new Grades();
+        // Initialise GradeDB object
+        GradesDB gradeDB = new GradesDB();
 
-        g.grades.add("grade1");
-        g.grades.add("grade2");
-        g.grades.add("grade3");
-
+        // get user info
         int num = 1;
         String pass = "pass2";
 
-        if (g.login(num, pass))
-            System.out.println(g.getGrade());
+        // log user in and return their grade info
+        if (gradeDB.login(num, pass))
+            System.out.println(gradeDB.getGrade());
         else
             System.out.println("Incorrect Password");
-
-
-
     }
 }
